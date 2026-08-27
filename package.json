@@ -1,0 +1,52 @@
+{
+  "name": "n8n-nodes-ethora",
+  "version": "0.1.0",
+  "description": "n8n community node for Ethora: send chat messages, manage rooms, and trigger AI agent replies on a self-hosted or cloud Ethora instance.",
+  "keywords": [
+    "n8n-community-node-package",
+    "ethora",
+    "chat",
+    "ai-agent",
+    "messaging"
+  ],
+  "license": "MIT",
+  "homepage": "https://ethora.com",
+  "author": {
+    "name": "Ethora / Dappros Ltd",
+    "url": "https://ethora.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dappros/n8n-nodes-ethora.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "n8n-node build",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "release": "n8n-node release"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/EthoraApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Ethora/Ethora.node.js"
+    ]
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^1.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
