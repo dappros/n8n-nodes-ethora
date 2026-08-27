@@ -13,6 +13,7 @@
   "homepage": "https://ethora.com",
   "author": {
     "name": "Ethora / Dappros Ltd",
+    "email": "leshchuh31@gmail.com",
     "url": "https://ethora.com"
   },
   "repository": {
@@ -43,7 +44,7 @@
     "n8n-workflow": "*"
   },
   "devDependencies": {
-    "@n8n/node-cli": "^1.0.0",
+    "@n8n/node-cli": "^0.46.0",
     "typescript": "^5.5.0"
   },
   "engines": {

@@ -4,8 +4,9 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IDataObject,
+	JsonObject,
 } from 'n8n-workflow';
-import { NodeConnectionType } from 'n8n-workflow';
+import { NodeApiError, NodeConnectionTypes } from 'n8n-workflow';
 
 export class Ethora implements INodeType {
 	description: INodeTypeDescription = {
@@ -16,11 +17,12 @@ export class Ethora implements INodeType {
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Send messages and manage rooms on a self-hosted or cloud Ethora instance',
+		usableAsTool: true,
 		defaults: {
 			name: 'Ethora',
 		},
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
 				name: 'ethoraApi',
@@ -216,7 +218,7 @@ export class Ethora implements INodeType {
 					});
 					continue;
 				}
-				throw error;
+				throw new NodeApiError(this.getNode(), error as JsonObject);
 			}
 		}
 

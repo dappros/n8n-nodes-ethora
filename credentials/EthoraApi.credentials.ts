@@ -12,12 +12,17 @@ export class EthoraApi implements ICredentialType {
 
 	documentationUrl = 'https://ethora.com';
 
+	icon = {
+		light: 'file:../nodes/Ethora/ethora.svg',
+		dark: 'file:../nodes/Ethora/ethora.svg',
+	} as const;
+
 	properties: INodeProperties[] = [
 		{
 			displayName: 'Base URL',
 			name: 'baseUrl',
 			type: 'string',
-			default: 'https://api.ethora.com',
+			default: 'https://api.chat.ethora.com',
 			placeholder: 'https://chat.your-domain.com',
 			description:
 				'The URL of your Ethora instance. Use your own domain for a self-hosted deployment, or the default for Ethora Cloud.',
