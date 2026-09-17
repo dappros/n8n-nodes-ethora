@@ -1,6 +1,6 @@
 # n8n-nodes-ethora
 
-n8n community node for [Ethora](https://ethora.com): send chat messages, manage rooms, and route messages to an AI agent from an n8n workflow.
+n8n community node for [Ethora](https://ethora.com) - send chat messages, manage rooms, and route messages to an AI agent from an n8n workflow.
 
 Works against Ethora Cloud or a self-hosted Ethora instance; you point the node at whichever one you're running via the base URL in the credential.
 
@@ -24,23 +24,27 @@ Create an **Ethora API** credential with:
 
 | Field | Description |
 |---|---|
-| Base URL | Your Ethora instance URL, a self-hosted domain, or the Ethora Cloud endpoint |
-| App ID | The workspace identifier for your Ethora instance |
-| API Key | An API key generated from your Ethora account settings |
+| Base URL | Your Ethora API base URL - a self-hosted domain, or `https://api.chat.ethora.com` for Ethora Cloud |
+| App ID | The app/workspace your Server Token is scoped to |
+| Server Token | A B2B Server JWT for this app, minted from your Ethora backend/admin flow (not an end-user login) |
 
 ## Operations
 
 **Message**
-- **Send**: post a message into a room
-- **Send to Agent**: send a message to a configured AI agent and return its reply, useful for wiring an Ethora agent into a larger n8n workflow (e.g. triage an incoming support email, then post the agent's draft reply back to a room for a human to approve)
+- **Send** - broadcast a message into one room (by Room ID) or every room in the app (`All Rooms`)
+- **Send to Agent** - send a message to an AI agent and return its reply synchronously (`reply`, plus `model`, `ragDocsUsed`, `totalTokens`)
 
 **Room**
-- **Create**: create a new chat room
-- **Get Many**: list rooms in the current workspace
+- **Create** - create a new chat room (Group or Public)
+- **Get Many** - list rooms in this app
 
 ## Example: agent-drafted replies from a form submission
 
-A common pattern: an n8n workflow receives a form submission (via webhook or another trigger), passes the text to **Message → Send to Agent**, and posts the agent's response into a review room for a team member to approve before it goes out. This keeps a human in the loop while letting the agent do the first pass.
+An n8n workflow receives a form submission (via webhook or another trigger), passes the text to **Message → Send to Agent**, and posts the agent's `reply` into a review room via **Message → Send** for a team member to approve before it goes out.
+
+## Example: broadcasting an alert from another system
+
+A common pattern: an n8n workflow receives a webhook (e.g. a monitoring alert), then uses **Message → Send** to post it straight into a review or notifications room, with `All Rooms` off and a specific Room ID targeted.
 
 ## Development
 

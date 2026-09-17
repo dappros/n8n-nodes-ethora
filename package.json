@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-ethora",
   "version": "0.1.0",
-  "description": "n8n community node for Ethora: send chat messages, manage rooms, and trigger AI agent replies on a self-hosted or cloud Ethora instance.",
+  "description": "n8n community node for Ethora: broadcast chat messages, manage rooms, and get AI agent replies on a self-hosted or cloud Ethora instance.",
   "keywords": [
     "n8n-community-node-package",
     "ethora",
@@ -13,7 +13,7 @@
   "homepage": "https://ethora.com",
   "author": {
     "name": "Ethora / Dappros Ltd",
-    "email": "leshchuh31@gmail.com",
+    "email": "roman.leshchuh@dappros.com",
     "url": "https://ethora.com"
   },
   "repository": {
