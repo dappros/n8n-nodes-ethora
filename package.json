@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-ethora",
-  "version": "0.1.1",
+  "version": "26.9.1",
   "description": "n8n community node for Ethora: broadcast chat messages, manage rooms, and get AI agent replies on a self-hosted or cloud Ethora instance.",
   "keywords": [
     "n8n-community-node-package",
